@@ -1,1 +1,20 @@
-# 
+import pandas as pd
+
+# Overall team averages
+overall_avg = df[
+    ["attendance_avg", "journal_rating", "reliability_rating"]
+].mean().round(2)
+
+# Comp team averages
+comp_avg = df[df["label_selected"] == 1][
+    ["attendance_avg", "journal_rating", "reliability_rating"]
+].mean().round(2)
+
+# Combine into a single table
+avg_df = pd.DataFrame({
+    "Overall Team": overall_avg,
+    "Competition Team": comp_avg
+})
+
+avg_df
+
